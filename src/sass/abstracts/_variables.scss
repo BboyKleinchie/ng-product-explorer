@@ -1,0 +1,99 @@
+@use "sass:math";
+
+:root {
+  // COLOUR-PALETTE
+  --colour-primary: #1a4ad9;
+  --colour-primary-hover: #2681b5;
+  --colour-primary-active: #2475a3;
+  --colour-primary-rgb: 26, 74, 217;
+  --colour-secondary: #1DA1F2;
+  --colour-tertiary: #7ED923;
+  --colour-quaternary: #ECF229;
+  --colour-quinary: #F25C05;
+
+  --colour-neutral-0: #FFF;
+  --colour-neutral-100: #E6E6E6;
+  --colour-neutral-200: #c8c8cc;
+  --colour-neutral-300: #a6a6aa;
+  --colour-neutral-400: #878789;
+  --colour-neutral-500: #65656f;
+  --colour-neutral-600: #4f4f5c;
+  --colour-neutral-700: #29353C;
+  --colour-neutral-800: #253138;
+  --colour-neutral-900: #151c1f;
+
+  --success: #17aa17;
+  --success-rgb: 23, 170, 23;
+  --info: #0275d8;
+  --info-rgb: 2, 117, 216;
+  --danger: #E40E4F;
+  --danger-rgb: 228, 14, 79;
+  --warning: #ff8800;
+  --warning-rgb: 255, 136, 0;
+  --dark: var(--colour-neutral-900);
+  --dark-rgb: 24, 24, 24;
+  --light: rgba(24,24,24, 0.4);
+  --light-rgb: 24, 24, 24;
+  --white: var(--colour-neutral-0);
+  --white-rgb: 255, 255, 255;
+  --disabled: var(--colour-neutral-300);
+  --disabled-rgb: 140, 140, 140;
+
+  --default-border: 1px solid var(--colour-neutral-200);
+}
+
+//
+// BREAKPOINTS
+//
+/*
+* breakpoints uses the browser font size (default: 16px) and not the updated font size in the .html tag
+*
+  min   — max
+  ------  -----
+  320px — 480px: Mobile devices (portrait).
+  481px — 768px: Mobile devices (landscape), iPads & Tablets (portrait).
+  769px — 1024px: Small screens, iPads & Tablets (landscape), laptops.
+  1025px — 1200px: Desktops, large screens.
+  1201px and more — High-res, Extra large screens, TV
+*/
+$breakpoint-min-mobile: 20em;
+$breakpoint-max-mobile: 30em;
+$breakpoint-min-tablet: 30.0625em;
+$breakpoint-max-tablet: 48em;
+$breakpoint-mid-tablet: math.div($breakpoint-min-tablet+$breakpoint-max-tablet, 2); //midpoint
+$breakpoint-min-laptop: 48.0625em;
+$breakpoint-max-laptop: 64em;
+$breakpoint-mid-laptop: math.div($breakpoint-min-laptop+$breakpoint-max-laptop, 2); //midpoint
+$breakpoint-min-desktop: 64.0625em;
+$breakpoint-max-desktop: 75em;
+$breakpoint-mid-desktop: math.div($breakpoint-min-desktop+$breakpoint-max-desktop, 2); //midpoint
+$breakpoint-min-tv: 75.0625em;
+$breakpoint-max-tv: 100vw;
+
+$haggld-breakpoints: (
+  phone: (
+    min: $breakpoint-min-mobile,
+    mid: $breakpoint-min-mobile,
+    max: $breakpoint-max-mobile
+  ),
+  tablet: (
+    min: $breakpoint-min-tablet,
+    mid: $breakpoint-mid-tablet,
+    max: $breakpoint-max-tablet
+  ),
+  laptop: (
+    min: $breakpoint-min-laptop,
+    mid: $breakpoint-mid-laptop,
+    max: $breakpoint-max-laptop
+  ),
+  desktop: (
+    min: $breakpoint-min-desktop,
+    mid: $breakpoint-mid-desktop,
+    max: $breakpoint-max-desktop
+  ),
+  tv: (
+    min: $breakpoint-min-tv,
+    mid: $breakpoint-min-tv,
+    max: $breakpoint-max-tv
+  )
+);

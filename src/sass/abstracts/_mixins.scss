@@ -1,0 +1,25 @@
+@use './functions' as *;
+
+/*
+* Responsive Design:
+* This is used to respond to different devices.
+* We are using the mobile-first approach; default $device=phone
+*
+* $device:
+* - phone
+* - tablet
+* - laptop
+* - desktop
+* - tv
+*
+* $mmm: min/mid/max
+* - min
+* - mid
+* - max
+*
+*/
+@mixin respond-to($device: phone, $mmm: max) {
+  $breakpoint: getBreakpoint($device, $mmm);
+
+  @media screen and (min-width: $breakpoint) { @content };
+}

@@ -1,0 +1,17 @@
+@use './../../../../sass/abstracts/mixins' as *;
+
+.footer {
+  padding: var(--pg-padding-x) var(--pg-padding-y);
+  display: flex;
+  flex-direction: column;
+  row-gap: 2rem;
+  border-top: var(--default-border);
+}
+
+.footer__copyright {
+  text-align: center;
+
+  font-size: .8rem;
+  @include respond-to(tablet, min) { font-size: 1rem; }
+  @include respond-to(desktop) { font-size: 1.2rem; }
+}
