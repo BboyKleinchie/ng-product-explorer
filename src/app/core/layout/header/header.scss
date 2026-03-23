@@ -1,0 +1,30 @@
+@use './../../../../sass/abstracts/mixins' as *;
+
+.header {
+  padding: var(--pg-padding-x) var(--pg-padding-y);
+  border-bottom: var(--default-border);
+
+  display: flex;
+  // justify-content: space-between;
+}
+
+.header__logo {
+  display: inline-block;
+  font-size: var(--header-logo-size);
+  font-weight: 600;
+  letter-spacing: -0.06em;
+  background-image: linear-gradient(
+    110deg,
+    var(--colour-primary) 0%,
+    var(--colour-secondary) 25%,
+    var(--colour-tertiary) 50%,
+    var(--colour-quaternary) 70%,
+    var(--colour-quinary) 80%,
+    var(--colour-primary) 100%);
+
+  background-clip: text;
+  color: transparent;
+
+  --header-logo-size: 2rem;
+  @include respond-to(tablet, min) { --header-logo-size: 3rem; }
+}

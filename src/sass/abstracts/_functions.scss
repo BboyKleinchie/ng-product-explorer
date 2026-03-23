@@ -1,0 +1,22 @@
+@use "sass:map";
+@use './variables' as *;
+
+/*
+* Responsive Design:
+* This function returns the breakpoint depending on device type and min,max or mid point
+*
+* $breakpoint:
+* - phone
+* - tablet
+* - laptop
+* - desktop
+* - tv
+*
+* $mmm: min/mid/max
+* - min
+* - mid
+* - max
+*/
+@function getBreakpoint($breakpoint, $mmm: max) {
+    @return map.get(map.get($haggld-breakpoints, $breakpoint), $mmm);
+}
