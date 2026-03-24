@@ -1,19 +1,11 @@
 @use './../../../../sass/abstracts/mixins' as *;
 
-// TODO: remove
-// .loader,
-// :host(.xs) > .loader { --loader-size: 2rem; }
-// :host(.sm) > .loader { --loader-size: 2.8rem; }
-// :host(.md) > .loader { --loader-size: 4rem; }
-// :host(.lg) > .loader { --loader-size: 4.8rem; }
-// :host(.xl) > .loader { --loader-size: 6rem; }
-
 .loader {
-  --loader-size: 2rem;
-  @include respond-to(tablet, min){ --loader-size: 2.8rem; }
-  @include respond-to(tablet, max){ --loader-size: 4rem; }
-  @include respond-to(desktop, min){ --loader-size: 4.8rem; }
-  @include respond-to(desktop){ --loader-size: 6rem; }
+  --loader-size: 3rem;
+  @include respond-to(tablet, min){ --loader-size: 3.8rem; }
+  @include respond-to(tablet, max){ --loader-size: 5rem; }
+  @include respond-to(desktop, min){ --loader-size: 5.8rem; }
+  @include respond-to(desktop){ --loader-size: 7rem; }
 }
 
 .loader,

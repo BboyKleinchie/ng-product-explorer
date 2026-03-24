@@ -1,0 +1,38 @@
+@use './../../../../sass/abstracts/mixins' as *;
+
+.search-bar {
+  padding: 2rem var(--pg-padding-y);
+}
+
+.search-bar__input-container {
+  position: relative;
+}
+
+.search-bar__icon {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translate(0, -40%);
+  margin: auto 1rem;
+}
+
+.search-bar__input {
+  border: 1px solid var(--colour-primary);
+  border-radius: 3rem;
+  outline: none;
+
+  width: 100%;
+  padding: .6rem .6rem .6rem 3.2rem;
+  font-size: 1.6rem;
+
+  text-overflow: ellipsis;
+
+  @include respond-to(tablet, min) { padding-left: 4rem; }
+  @include respond-to(tablet) { padding: 1rem 1rem 1rem 4rem; }
+
+  &:focus {
+    background-color: rgba($color: var(--colour-primary-rgb), $alpha: 0.1);
+    box-shadow: none;
+    color: var(--colour-primary);
+  }
+}

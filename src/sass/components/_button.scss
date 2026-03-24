@@ -1,0 +1,27 @@
+.button,
+.button.primary {
+  padding: .6rem 2rem;
+  border-radius: 4px;
+  color: var(--colour-neutral-0);
+  background-color: var(--colour-primary);
+  border: 1px solid var(--colour-primary);
+  font-size: 1.4rem;
+
+  &:hover { background-color: var(--colour-primary-hover); }
+  &:active { background-color: var(--colour-primary-active); }
+}
+
+.button.outline,
+.button.outline.primary {
+  background-color: var(--colour-neutral-0);
+  border: 1px solid var(--colour-primary);
+  color: var(--colour-primary);
+
+  &:hover { background-color: var(--colour-primary-hover); }
+  &:active { background-color: var(--colour-primary-active); }
+  &:hover,
+  &:active {
+    color: var(--colour-neutral-0);
+  }
+
+}

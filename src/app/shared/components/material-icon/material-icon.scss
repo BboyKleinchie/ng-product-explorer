@@ -1,0 +1,23 @@
+@use './../../../../sass/abstracts/mixins' as *;
+
+.material-icons {
+  display: inline-block;
+  color: var(--icon-colour);
+  font-size: var(--icon-size);
+
+  transition: color .1s ease-in;
+
+  --icon-size: 2rem;
+  @include respond-to(tablet, min) { --icon-size: 2.4rem; }
+  @include respond-to(tablet) { --icon-size: 3.2rem; }
+}
+
+.material-icons,
+:host(.primary) > .material-icons { --icon-colour: var(--colour-primary); }
+:host(.secondary) > .material-icons { --icon-colour: var(--colour-secondary); }
+:host(.danger) > .material-icons { --icon-colour: var(--danger); }
+:host(.white) > .material-icons { --icon-colour: var(--white); }
+
+:host(.hover) > .material-icons:hover,
+:host(.primary.hover) > .material-icons:hover { --icon-colour: var(--colour-secondary); }
+:host(.secondary.hover) > .material-icons:hover { --icon-colour: var(--colour-primary); }

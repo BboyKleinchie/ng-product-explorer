@@ -3,8 +3,8 @@
 :root {
   // COLOUR-PALETTE
   --colour-primary: #1a4ad9;
-  --colour-primary-hover: #2681b5;
-  --colour-primary-active: #2475a3;
+  --colour-primary-hover: #103cbf;
+  --colour-primary-active: #385dcb;
   --colour-primary-rgb: 26, 74, 217;
   --colour-secondary: #1DA1F2;
   --colour-tertiary: #7ED923;
@@ -40,6 +40,7 @@
   --disabled-rgb: 140, 140, 140;
 
   --default-border: 1px solid var(--colour-neutral-200);
+  --main-min-height: 80vh;
 }
 
 //
