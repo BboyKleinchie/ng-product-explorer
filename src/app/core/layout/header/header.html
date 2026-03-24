@@ -1,3 +1,8 @@
 <header class="header">
   <a routerLink="/"><h1 class="header__logo">ProductExplorer</h1></a>
+  <pe-link-list label="User Profile links">
+    <li class="header__link">
+      <a routerLink="favourite" [aria-label]="`Favourite products`">View favourites</a>
+    </li>
+  </pe-link-list>
 </header>

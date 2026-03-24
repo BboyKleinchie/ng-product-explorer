@@ -27,4 +27,8 @@
   font-size: 1.4rem;
   border-top: var(--default-border);
   padding: .6rem 0;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }

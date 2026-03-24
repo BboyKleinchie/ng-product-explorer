@@ -1,0 +1,36 @@
+<section class="favourite" aria-labelledby="favourite-heading">
+  <h2 id="favourite-heading" class="visually-hidden">Favourite products results</h2>
+
+  <div class="visually-hidden" aria-live="polite" aria-atomic="true">
+    @if (store.isLoading$()) {
+      Loading products...
+    } @else if (!hasFavouriteProducts()) {
+      No favourite products found.
+    } @else {
+      {{ products$().length }} favourite products loaded.
+    }
+    </div>
+
+    @if (hasFavouriteProducts() && !store.isLoading$()) {
+      <ul class="favourite__products"
+        aria-live="polite"
+        [aria-busy]="store.isLoading$()">
+        @for (product of products$(); track product.id) {
+          <li>
+            <pe-product-card
+              [product]="product"
+              (selected)="viewProductDetails($event)"
+              (favouriteChanged)="loadFavouriteProducts()"/>
+          </li>
+        }
+      </ul>
+    }
+
+    @if (!hasFavouriteProducts() && !store.isLoading$()) {
+      <pe-no-products-card
+        role="status"
+        aria-live="polite"
+        title="Favourites empty"
+        description="You have no products marked as favourite"/>
+    }
+</section>

@@ -5,7 +5,8 @@
   border-bottom: var(--default-border);
 
   display: flex;
-  // justify-content: space-between;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .header__logo {
@@ -28,3 +29,10 @@
   --header-logo-size: 2rem;
   @include respond-to(tablet, min) { --header-logo-size: 3rem; }
 }
+
+.header__link {
+  padding: 0.5rem 1rem;
+}
+.header__link > a {text-decoration: none;}
+.header__link:not(:last-child) { border-right: 1px solid var(--colour-primary);}
+

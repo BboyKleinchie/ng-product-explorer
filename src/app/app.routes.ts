@@ -15,6 +15,12 @@ export const routes: Routes = [
         .then(m => m.ProductDetails)
   },
   {
+    path: 'favourite',
+    loadComponent: () =>
+      import('./features/favourite/favourite')
+        .then(m => m.Favourite)
+  },
+  {
     path: '**',
     component: NoPageFoundPage
   }

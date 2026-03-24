@@ -7,7 +7,7 @@ import { ProductStore } from '../../core/stores/product-store';
 import { DropdownComponent } from '../../shared/components/dropdown/dropdown';
 import { LoadingSpinnerComponent } from '../../shared/components/loading-spinner/loading-spinner';
 import { NoProductsCardComponent } from '../../shared/components/card/no-products-card/no-products-card';
-import { ProductCardComponent } from './components/product-card/product-card';
+import { ProductCardComponent } from '../../shared/components/card/product-card/product-card';
 import { SearchBarComponent } from '../../shared/components/search-bar/search-bar';
 
 import { Category } from '../../shared/types/category.type';
