@@ -1,5 +1,4 @@
-import { STORAGE_KEY } from './../../../constants/storage.constants';
-import { Component, effect, inject, input, OnInit, output, signal } from '@angular/core';
+import { Component, inject, input, OnInit, output, signal, TemplateRef, ViewChild } from '@angular/core';
 import { CurrencyPipe } from '@angular/common';
 
 import { MaterialIconComponent } from '../../material-icon/material-icon';
@@ -7,8 +6,9 @@ import { RatingComponent } from '../../rating/rating';
 import { VerticalCardComponent } from './../../../../shared/components/card/vertical-card/vertical-card';
 
 import { Product } from '../../../../shared/models/product.model';
-import { isStringNullOrEmpty } from '../../../utils/isEmptyChecks.utils';
+import { ToastService } from '../../../../core/services/toast/toast';
 import { FavouritesService } from '../../../../core/services/favourites/favourites';
+import { STORAGE_KEY } from './../../../constants/storage.constants';
 
 @Component({
   selector: 'pe-product-card',
@@ -27,19 +27,14 @@ export class ProductCardComponent implements OnInit {
   favouriteChanged = output();
 
   isMarkedAsFavourite = signal<boolean>(false);
+
+  @ViewChild('toastMarkFavouriteSuccess')
+  private toastMarkFavouriteSuccessTemplate!: TemplateRef<any>;
+  @ViewChild('toastUnmarkFavouriteSuccess')
+  private toastUnmarkFavouriteSuccessTemplate!: TemplateRef<any>;
+
   private readonly favouritesService = inject(FavouritesService);
-
-  constructor() {
-    effect(() => {
-      const productId = this.product().id.toString();
-
-      if (this.isMarkedAsFavourite()) {
-        this.markProductAsFavourite(productId);
-      } else {
-        this.unmarkProductAsFavourite(productId);
-      }
-    })
-  }
+  private readonly toastService = inject(ToastService);
 
   ngOnInit(): void {
     this.checkIfProductMarkedAsFavourite();
@@ -47,6 +42,14 @@ export class ProductCardComponent implements OnInit {
 
   toggleFavourite() {
     this.isMarkedAsFavourite.update((flag) => !flag);
+
+    const productId = this.product().id.toString();
+
+    if (this.isMarkedAsFavourite()) {
+      this.markProductAsFavourite(productId);
+    } else {
+      this.unmarkProductAsFavourite(productId);
+    }
   }
 
   private checkIfProductMarkedAsFavourite() {
@@ -65,6 +68,7 @@ export class ProductCardComponent implements OnInit {
 
     localStorage.setItem(STORAGE_KEY.favouriteProducts, JSON.stringify(productIds));
     this.favouriteChanged.emit();
+    this.toastService.show({ template: this.toastMarkFavouriteSuccessTemplate, classname: 'bg-success text-light', delay: 4000 });
   }
 
   private unmarkProductAsFavourite(productId: string) {
@@ -79,5 +83,6 @@ export class ProductCardComponent implements OnInit {
 
     localStorage.setItem(STORAGE_KEY.favouriteProducts, JSON.stringify(productIds));
     this.favouriteChanged.emit();
+    this.toastService.show({ template: this.toastUnmarkFavouriteSuccessTemplate, classname: 'bg-success text-light', delay: 4000 });
   }
 }

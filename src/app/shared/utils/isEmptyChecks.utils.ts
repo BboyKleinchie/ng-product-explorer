@@ -46,3 +46,10 @@ export const isArrayNullOrEmpty = <T>(arrayToCheck: T[]): boolean => {
     || isNumberNullOrZero(get(arrayToCheck, 'length', 0))
   );
 }
+
+export const isCollectionNullOrEmpty = <T>(collectionToCheck: T): boolean => {
+    return (
+        isPropertyNull(collectionToCheck)
+        || JSON.stringify(collectionToCheck) === '{}'
+    )
+}

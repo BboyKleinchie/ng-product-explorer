@@ -2,7 +2,7 @@ import { Component, computed, inject, signal } from '@angular/core';
 import { orderBy, startCase } from 'lodash-es';
 import { Router } from '@angular/router';
 
-import { ProductStore } from '../../core/stores/product-store';
+import { ProductStore } from '../../core/stores/product/product-store';
 
 import { DropdownComponent } from '../../shared/components/dropdown/dropdown';
 import { LoadingSpinnerComponent } from '../../shared/components/loading-spinner/loading-spinner';

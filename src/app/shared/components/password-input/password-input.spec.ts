@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DropdownComponent } from './dropdown';
+import { PasswordInputComponent } from './password-input';
 
-describe('DropdownComponent', () => {
-  let component: DropdownComponent;
-  let fixture: ComponentFixture<DropdownComponent>;
+describe('PasswordInputComponent', () => {
+  let component: PasswordInputComponent;
+  let fixture: ComponentFixture<PasswordInputComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DropdownComponent]
+      imports: [PasswordInputComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(DropdownComponent);
+    fixture = TestBed.createComponent(PasswordInputComponent);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });

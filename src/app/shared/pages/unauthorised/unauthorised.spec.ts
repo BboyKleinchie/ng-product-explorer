@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DropdownComponent } from './dropdown';
+import { Unauthorised } from './unauthorised';
 
-describe('DropdownComponent', () => {
-  let component: DropdownComponent;
-  let fixture: ComponentFixture<DropdownComponent>;
+describe('Unauthorised', () => {
+  let component: Unauthorised;
+  let fixture: ComponentFixture<Unauthorised>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DropdownComponent]
+      imports: [Unauthorised]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(DropdownComponent);
+    fixture = TestBed.createComponent(Unauthorised);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });

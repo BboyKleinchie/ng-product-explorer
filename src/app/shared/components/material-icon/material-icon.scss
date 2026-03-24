@@ -12,6 +12,10 @@
   @include respond-to(tablet) { --icon-size: 3.2rem; }
 }
 
+:host(.md) > .material-icons {
+  --icon-size: 2rem;
+}
+
 .material-icons,
 :host(.primary) > .material-icons { --icon-colour: var(--colour-primary); }
 :host(.secondary) > .material-icons { --icon-colour: var(--colour-secondary); }

@@ -1,0 +1,12 @@
+@use '../../../../../sass/abstracts/mixins' as *;
+
+.login__form {
+  width: 30rem;
+  @include respond-to(tablet) { width: 35rem; }
+  @include respond-to(laptop) { width: 40rem; }
+}
+
+.btn.md {
+  --bs-btn-font-size: 1.4rem;
+  @include respond-to(tablet) { --bs-btn-font-size: 1.6rem; }
+}

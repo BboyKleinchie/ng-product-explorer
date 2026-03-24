@@ -2,7 +2,7 @@
   <h2 id="favourite-heading" class="visually-hidden">Favourite products results</h2>
 
   <div class="visually-hidden" aria-live="polite" aria-atomic="true">
-    @if (store.isLoading$()) {
+    @if (store.isLoading$() || isLoadingFavouriteProducts()) {
       Loading products...
     } @else if (!hasFavouriteProducts()) {
       No favourite products found.
@@ -11,7 +11,7 @@
     }
     </div>
 
-    @if (hasFavouriteProducts() && !store.isLoading$()) {
+    @if (hasFavouriteProducts() && !(store.isLoading$() || isLoadingFavouriteProducts())) {
       <ul class="favourite__products"
         aria-live="polite"
         [aria-busy]="store.isLoading$()">
@@ -26,11 +26,21 @@
       </ul>
     }
 
-    @if (!hasFavouriteProducts() && !store.isLoading$()) {
+    @if (!hasFavouriteProducts() && !(store.isLoading$() || isLoadingFavouriteProducts())) {
       <pe-no-products-card
         role="status"
         aria-live="polite"
         title="Favourites empty"
         description="You have no products marked as favourite"/>
+    }
+
+    @if (store.isLoading$() || isLoadingFavouriteProducts()) {
+      <div
+        class="favourite__is-loading"
+        role="status"
+        aria-live="polite"
+        aria-label="Loading favourite products">
+        <pe-loading-spinner />
+      </div>
     }
 </section>

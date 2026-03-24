@@ -1,0 +1,45 @@
+<div ngbDropdown class="d-inline-block">
+  <button type="button" class="btn btn-outline-primary md" id="dropdownForm1" ngbDropdownToggle>
+    Login
+  </button>
+  <div ngbDropdownMenu aria-labelledby="dropdownForm1">
+    <form
+      class="px-4 py-3 login__form"
+      [formGroup]="loginForm"
+      (ngSubmit)="onSignIn($event)">
+      <div class="mb-3">
+        <label for="exampleDropdownFormEmail1">Email address</label>
+
+        <pe-form-field [form]="loginForm" fieldName="email">
+          <input
+            type="email"
+            class="pe-input form-control"
+            id="exampleDropdownFormEmail1"
+            placeholder="email@example.com"
+            autocomplete="username"
+            formControlName="email"
+          />
+        </pe-form-field>
+      </div>
+      <div class="mb-3">
+        <label for="exampleDropdownFormPassword1">Password</label>
+        <pe-form-field [form]="loginForm" fieldName="password">
+          <pe-password-input (visibilityChange)="isPasswordVisible.set($event)">
+            <input
+              class="pe-input"
+              id="exampleDropdownFormPassword1"
+              placeholder="Password"
+              autocomplete="current-password"
+              [type]="`${isPasswordVisible()?'text':'password'}`"
+              formControlName="password"
+            />
+          </pe-password-input>
+        </pe-form-field>
+      </div>
+      <button type="submit" class="btn btn-primary" ngbDropdownItem>Sign in</button>
+    </form>
+  </div>
+</div>
+
+
+<ng-template #signInSuccess>Signed-in successfully</ng-template>

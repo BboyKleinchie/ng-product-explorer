@@ -2,7 +2,7 @@ import { CurrencyPipe } from '@angular/common';
 import { Component, inject, input } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { ProductStore } from '../../../core/stores/product-store';
+import { ProductStore } from '../../../core/stores/product/product-store';
 import { CardComponent } from '../../../shared/components/card/card';
 import { LoadingSpinnerComponent } from '../../../shared/components/loading-spinner/loading-spinner';
 import { RatingComponent } from '../../../shared/components/rating/rating';

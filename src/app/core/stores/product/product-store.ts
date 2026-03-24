@@ -1,10 +1,10 @@
 import { computed, effect, inject, Injectable, OnDestroy, signal } from '@angular/core';
 import { Subject, takeUntil } from 'rxjs';
 
-import { Product } from '../../shared/models/product.model';
-import { ProductService } from '../../core/services/product/product-api.ts';
-import { isArrayNullOrEmpty, isPropertyNull } from '../../shared/utils/isEmptyChecks.utils';
-import { Store } from '../../core/store';
+import { Product } from '../../../shared/models/product.model';
+import { ProductService } from '../../services/product/product-api.ts';
+import { isArrayNullOrEmpty, isPropertyNull } from '../../../shared/utils/isEmptyChecks.utils';
+import { Store } from '../../store';
 
 @Injectable({ providedIn: 'root' })
 export class ProductStore extends Store implements OnDestroy {
