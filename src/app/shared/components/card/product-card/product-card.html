@@ -10,5 +10,11 @@
   <pe-rating [rating]="product().rating" />
   <div class="product__cta">
     <button class="flat-button primary" (click)="selected.emit(product())">View details</button>
+    <button class="flat-button primary" (click)="toggleFavourite()">
+      <pe-material-icon
+        [name]="isMarkedAsFavourite() ? 'favorite' : 'favorite_border'"
+        class="danger"
+        />
+    </button>
   </div>
 </pe-vertical-card>

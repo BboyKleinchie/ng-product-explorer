@@ -1,0 +1,22 @@
+@use '../../../../sass/abstracts/mixins' as *;
+
+.link-list {
+  display: flex;
+  align-items: center;
+  gap: 0rem;
+  @include respond-to(tablet) { gap: 0.6rem; }
+  @include respond-to(laptop) { gap: 1rem; }
+
+
+  padding: 0;
+  margin: 0;
+
+  list-style: none;
+  text-decoration: none;
+
+  font-size: 1.2rem;
+
+  @include respond-to(tablet) { font-size: 1.4rem; }
+  @include respond-to(laptop) { font-size: 1.6rem; }
+}
+

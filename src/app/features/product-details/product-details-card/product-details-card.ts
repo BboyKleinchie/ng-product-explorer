@@ -1,11 +1,11 @@
 import { CurrencyPipe } from '@angular/common';
-import { Component, computed, inject, input, signal } from '@angular/core';
+import { Component, inject, input } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { ProductStore } from '../../../core/stores/product-store';
 import { CardComponent } from '../../../shared/components/card/card';
 import { LoadingSpinnerComponent } from '../../../shared/components/loading-spinner/loading-spinner';
-import { RatingComponent } from '../../catalog/components/rating/rating';
+import { RatingComponent } from '../../../shared/components/rating/rating';
 import { Product } from '../../../shared/models/product.model';
 
 @Component({
@@ -14,7 +14,6 @@ import { Product } from '../../../shared/models/product.model';
     CardComponent,
     LoadingSpinnerComponent,
     RatingComponent,
-    // InfoModalComponent,
     CurrencyPipe
   ],
   templateUrl: './product-details-card.html',

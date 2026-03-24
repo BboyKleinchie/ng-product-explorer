@@ -1,5 +1,5 @@
 import { Component, input } from '@angular/core';
-import { Rating } from '../../../../shared/models/rating.model';
+import { Rating } from '../../models/rating.model';
 
 @Component({
   selector: 'pe-rating',
