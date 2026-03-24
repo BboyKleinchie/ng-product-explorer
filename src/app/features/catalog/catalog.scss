@@ -1,5 +1,12 @@
 @use './../../../sass/abstracts/mixins' as *;
 
+.options {
+  padding: 0 var(--pg-padding-y);
+
+  display: flex;
+  justify-content: space-between;
+}
+
 .catalog {
   background-color: var(--colour-secondary);
   min-height: var(--main-min-height);

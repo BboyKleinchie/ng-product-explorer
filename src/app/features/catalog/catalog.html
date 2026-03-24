@@ -1,4 +1,11 @@
 <pe-search-bar placeholder="Search products" (search)="onSearchProducts($event)"/>
+<div class="options">
+  <pe-dropdown
+    label="Filter by:"
+    [items]="categories()"
+    (selected)="onCategorySelection($event)">
+  </pe-dropdown>
+</div>
 
 <section class="catalog" aria-labelledby="catalog-heading">
   <h2 id="catalog-heading" class="visually-hidden">Catalog results</h2>

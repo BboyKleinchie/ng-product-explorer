@@ -1,7 +1,9 @@
 import { Component, computed, inject, signal } from '@angular/core';
+import { startCase } from 'lodash-es';
 
 import { ProductStore } from './stores/product-store';
 
+import { DropdownComponent } from '../../shared/components/dropdown/dropdown';
 import { LoadingSpinnerComponent } from '../../shared/components/loading-spinner/loading-spinner';
 import { NoProductsCardComponent } from './components/no-products-card/no-products-card';
 import { ProductCardComponent } from './components/product-card/product-card';
@@ -13,6 +15,7 @@ import { Category } from './types/category.type';
 @Component({
   selector: 'pe-catalog',
   imports: [
+    DropdownComponent,
     LoadingSpinnerComponent,
     NoProductsCardComponent,
     ProductCardComponent,
@@ -28,7 +31,8 @@ export class Catalog {
     return this.store.products$()
                .filter(p => {
                   return (
-                    (this.selectedCategory() === 'All' || p.category === this.selectedCategory())
+                    (
+                      this.selectedCategory() === 'All' || startCase(p.category) === this.selectedCategory())
                     && (
                       isStringNullOrEmpty(this.searchText())
                       || (
@@ -44,6 +48,10 @@ export class Catalog {
                   )
                })
     });
+
+  categories = computed(() => {
+    return ['All', ...Array.from(new Set(this.store.products$().map(p => startCase(p.category))))]
+  });
 
   private selectedCategory = signal<Category | string>('All');
   private searchText = signal<string>('');
