@@ -26,7 +26,6 @@ export class ProductStore extends Store implements OnDestroy {
     super();
     effect(() => {
       if (this.isLoaded() || this.isLoading()) { return; }
-      console.log('loading products...');
       this.loadProducts();
     });
   }
@@ -40,7 +39,7 @@ export class ProductStore extends Store implements OnDestroy {
 
   private loadProducts() {
     if (this.isLoaded() || this.isLoading$()) { return; }
-    console.log('setting isLoading to true');
+
     this.isLoading.set(true);
 
     this.productService

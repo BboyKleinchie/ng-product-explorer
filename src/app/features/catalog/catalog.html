@@ -5,6 +5,11 @@
     [items]="categories()"
     (selected)="onCategorySelection($event)">
   </pe-dropdown>
+  <pe-dropdown
+    label="Sort by:"
+    [items]="sortingOptions$()"
+    (selected)="onSortingSelection($event)">
+  </pe-dropdown>
 </div>
 
 <section class="catalog" aria-labelledby="catalog-heading">

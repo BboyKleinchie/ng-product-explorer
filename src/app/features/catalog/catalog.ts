@@ -1,5 +1,6 @@
+import { isPropertyNull } from './../../shared/utils/isEmptyChecks.utils';
 import { Component, computed, inject, signal } from '@angular/core';
-import { startCase } from 'lodash-es';
+import { orderBy, startCase } from 'lodash-es';
 
 import { ProductStore } from './stores/product-store';
 
@@ -11,6 +12,12 @@ import { SearchBarComponent } from '../../shared/components/search-bar/search-ba
 
 import { isStringNullOrEmpty } from '../../shared/utils/isEmptyChecks.utils';
 import { Category } from './types/category.type';
+import { sortingOptions, SortingOption } from './types/sorting-options.type';
+
+interface SortOrder {
+  property: string;
+  order: 'asc' | 'desc';
+}
 
 @Component({
   selector: 'pe-catalog',
@@ -27,7 +34,17 @@ import { Category } from './types/category.type';
 export class Catalog {
   store = inject(ProductStore);
 
-  allProducts = computed(() => {
+  readonly allProducts = computed(() => {
+    if (isPropertyNull(this.sortOrder()) || this.sortOrder()?.property.toLowerCase() === 'none') return this.filteredProducts();
+
+    return orderBy(
+      this.filteredProducts(),
+      this.sortOrder()?.property,
+      this.sortOrder()?.order || 'asc'
+    );
+  });
+
+  readonly filteredProducts = computed(() => {
     return this.store.products$()
                .filter(p => {
                   return (
@@ -49,12 +66,16 @@ export class Catalog {
                })
     });
 
-  categories = computed(() => {
+  readonly categories = computed(() => {
     return ['All', ...Array.from(new Set(this.store.products$().map(p => startCase(p.category))))]
   });
 
+  readonly sortingOptions$ = computed(() => this.sortingOptions());
+
   private selectedCategory = signal<Category | string>('All');
   private searchText = signal<string>('');
+  private sortingOptions = signal<SortingOption[]>(sortingOptions);
+  private sortOrder = signal<SortOrder | null>(null);
 
   onCategorySelection(category: Category | string) {
     this.selectedCategory.set(category);
@@ -62,5 +83,16 @@ export class Catalog {
 
   onSearchProducts(searchText: string) {
     this.searchText.set(searchText);
+  }
+
+  onSortingSelection(option: SortingOption | string) {
+    this.sortOrder.set({
+      property: (
+        option.toLowerCase().includes('rating') ? 'rating.rate'
+        : option.toLowerCase().includes('price') ? 'price'
+        : 'none'
+      ),
+      order: option.toLocaleLowerCase().includes('highest') ? 'desc' : 'asc'
+    });
   }
 }
