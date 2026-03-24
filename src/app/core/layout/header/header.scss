@@ -33,6 +33,9 @@
 .header__link {
   padding: 0.5rem 1rem;
 }
-.header__link > a {text-decoration: none;}
+.header__link > a {
+  text-decoration: none;
+  color: var(--colour-primary);
+}
 .header__link:not(:last-child) { border-right: 1px solid var(--colour-primary);}
 

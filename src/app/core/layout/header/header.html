@@ -4,5 +4,21 @@
     <li class="header__link">
       <a routerLink="favourite" [aria-label]="`Favourite products`">View favourites</a>
     </li>
+    @if (!authService.authenticated$()) {
+      <li class="header__link">
+        <pe-login-dropdown />
+      </li>
+    }
+
+    @if (authService.authenticated$()) {
+      <ng-container>
+        <li class="header__link">
+          <button class="flat-button" (click)="authService.signOut()">Sign out</button>
+        </li>
+        <li class="header__link">
+          <a routerLink="admin" [aria-label]="`View admin`">View admin</a>
+        </li>
+      </ng-container>
+    }
   </pe-link-list>
 </header>
