@@ -3,7 +3,6 @@ import { delayWhen, interval, Observable, of } from 'rxjs';
 
 import { MockService } from '../../../core/services/mock/mock.service';
 import { Product } from '../../../shared/models/product.model';
-import { ProductStore } from '../../stores/product/product-store';
 
 @Injectable({ providedIn: 'root' })
 export class ProductService {
