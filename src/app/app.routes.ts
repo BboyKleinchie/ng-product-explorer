@@ -9,6 +9,12 @@ export const routes: Routes = [
     component: Catalog
   },
   {
+    path: 'product-details/:productId',
+    loadComponent: () =>
+      import('./features/product-details/product-details')
+        .then(m => m.ProductDetails)
+  },
+  {
     path: '**',
     component: NoPageFoundPage
   }

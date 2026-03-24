@@ -38,7 +38,7 @@
       [aria-busy]="store.isLoading$()">
       @for (product of allProducts(); track product.id) {
         <li>
-          <pe-product-card [product]="product" />
+          <pe-product-card [product]="product" (selected)="viewProductDetails($event)" />
         </li>
       }
     </ul>

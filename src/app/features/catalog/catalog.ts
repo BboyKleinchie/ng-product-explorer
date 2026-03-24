@@ -1,18 +1,19 @@
-import { isPropertyNull } from './../../shared/utils/isEmptyChecks.utils';
 import { Component, computed, inject, signal } from '@angular/core';
 import { orderBy, startCase } from 'lodash-es';
+import { Router } from '@angular/router';
 
-import { ProductStore } from './stores/product-store';
+import { ProductStore } from '../../core/stores/product-store';
 
 import { DropdownComponent } from '../../shared/components/dropdown/dropdown';
 import { LoadingSpinnerComponent } from '../../shared/components/loading-spinner/loading-spinner';
-import { NoProductsCardComponent } from './components/no-products-card/no-products-card';
+import { NoProductsCardComponent } from '../../shared/components/card/no-products-card/no-products-card';
 import { ProductCardComponent } from './components/product-card/product-card';
 import { SearchBarComponent } from '../../shared/components/search-bar/search-bar';
 
-import { isStringNullOrEmpty } from '../../shared/utils/isEmptyChecks.utils';
-import { Category } from './types/category.type';
-import { sortingOptions, SortingOption } from './types/sorting-options.type';
+import { Category } from '../../shared/types/category.type';
+import { sortingOptions, SortingOption } from '../../shared/types/sorting-options.type';
+import { isStringNullOrEmpty, isPropertyNull } from '../../shared/utils/isEmptyChecks.utils';
+import { Product } from '../../shared/models/product.model';
 
 interface SortOrder {
   property: string;
@@ -77,6 +78,8 @@ export class Catalog {
   private sortingOptions = signal<SortingOption[]>(sortingOptions);
   private sortOrder = signal<SortOrder | null>(null);
 
+  private router = inject(Router);
+
   onCategorySelection(category: Category | string) {
     this.selectedCategory.set(category);
   }
@@ -94,5 +97,9 @@ export class Catalog {
       ),
       order: option.toLocaleLowerCase().includes('highest') ? 'desc' : 'asc'
     });
+  }
+
+  viewProductDetails(product: Product) {
+    this.router.navigate(['product-details', product.id]);
   }
 }

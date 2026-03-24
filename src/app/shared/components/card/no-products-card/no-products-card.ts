@@ -1,6 +1,6 @@
 import { Component, input } from '@angular/core';
 
-import { CardComponent } from '../../../../shared/components/card/card';
+import { CardComponent } from '../card';
 
 @Component({
   selector: 'pe-no-products-card',

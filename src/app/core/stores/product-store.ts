@@ -1,14 +1,15 @@
 import { computed, effect, inject, Injectable, OnDestroy, signal } from '@angular/core';
 import { Subject, takeUntil } from 'rxjs';
 
-import { Product } from '../models/product.model';
-import { ProductService } from '../services/product-api.ts';
-import { isArrayNullOrEmpty } from '../../../shared/utils/isEmptyChecks.utils';
-import { Store } from '../../../core/store';
+import { Product } from '../../shared/models/product.model';
+import { ProductService } from '../../core/services/product/product-api.ts';
+import { isArrayNullOrEmpty, isPropertyNull } from '../../shared/utils/isEmptyChecks.utils';
+import { Store } from '../../core/store';
 
 @Injectable({ providedIn: 'root' })
 export class ProductStore extends Store implements OnDestroy {
   private products = signal<Product[]>([]);
+  private productDetails = signal<Product | null>(null);
 
   private productService = inject(ProductService);
   private readonly destroyed$ = new Subject<void>();
@@ -20,7 +21,10 @@ export class ProductStore extends Store implements OnDestroy {
 
     return this.products();
   });
+  readonly productDetails$ = this.productDetails.asReadonly();
+
   readonly hasProducts = computed(() => !isArrayNullOrEmpty(this.products()));
+  readonly hasProductDetails = computed(() => !isPropertyNull(this.productDetails$()));
 
   constructor() {
     super();
@@ -36,6 +40,11 @@ export class ProductStore extends Store implements OnDestroy {
   }
 
   public override refresh(): void { super.refresh(); }
+
+  public getProductDetails(productId: string) {
+    // realworld we'll call the product service which will get the details from an http get request
+    this.productDetails.set(this.products$().find(p => p.id.toString() === productId) || null);
+  }
 
   private loadProducts() {
     if (this.isLoaded() || this.isLoading$()) { return; }

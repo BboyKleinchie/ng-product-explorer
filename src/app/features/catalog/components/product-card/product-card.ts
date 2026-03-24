@@ -4,7 +4,7 @@ import { CurrencyPipe } from '@angular/common';
 import { RatingComponent } from './../rating/rating';
 import { VerticalCardComponent } from './../../../../shared/components/card/vertical-card/vertical-card';
 
-import { Product } from './../../models/product.model';
+import { Product } from '../../../../shared/models/product.model';
 
 @Component({
   selector: 'pe-product-card',
