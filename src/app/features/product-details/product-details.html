@@ -1,0 +1,19 @@
+<div class="product-details">
+  @if(store.isLoading$()) {
+    <div class="product-details__is-loading">
+      <pe-loading-spinner class="primary both"/>
+    </div>
+  }
+
+  @if(store.hasProductDetails() && !store.isLoading$()) {
+    <pe-product-details-card [productDetails]="store.productDetails$()"></pe-product-details-card>
+  }
+
+  @if(!store.hasProductDetails() && !store.isLoading$()) {
+    <pe-no-products-card
+      title="No Product Found"
+      description="Sorry, we couldn't find any product details for the selected product">
+      <button class="button outline primary" (click)="goHome()">Continue shopping</button>
+    </pe-no-products-card>
+  }
+</div>

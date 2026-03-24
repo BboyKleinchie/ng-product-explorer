@@ -25,3 +25,14 @@
   }
 
 }
+
+.flat-button {
+  border: none;
+  background-color: transparent;
+  color: var(--colour-secondary);
+
+  transition: color .1s ease-in;
+
+  &:hover { color: var(--colour-primary); }
+  &:active { color: var(--colour-primary); }
+}
