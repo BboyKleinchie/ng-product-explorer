@@ -1,0 +1,27 @@
+@use './../../../sass/abstracts/mixins' as *;
+
+.catalog {
+  background-color: var(--colour-secondary);
+  min-height: var(--main-min-height);
+}
+
+.catalog__products {
+  display: grid;
+  grid-template-columns: repeat(var(--columns), 20rem);
+  gap: 2rem;
+  padding: var(--pg-padding-x) var(--pg-padding-y);
+  list-style-type: none;
+
+  --columns: 1;
+  @include respond-to(tablet, min) { --columns: 2; }
+  @include respond-to(tablet) { --columns: 3; }
+  @include respond-to(desktop, min) { --columns: 4; }
+  @include respond-to(desktop) { --columns: 5; }
+}
+
+.catalog__is-loading {
+  padding: var(--pg-padding-x) var(--pg-padding-y);
+
+  display: flex;
+  justify-content: center;
+}

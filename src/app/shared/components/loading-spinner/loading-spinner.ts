@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'storefront-loading-spinner',
+  selector: 'pe-loading-spinner',
   imports: [],
   templateUrl: './loading-spinner.html',
   styleUrl: './loading-spinner.scss',

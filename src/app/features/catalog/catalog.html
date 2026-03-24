@@ -1,0 +1,28 @@
+<pe-search-bar placeholder="Search products" (search)="onSearchProducts($event)"/>
+
+<section class="catalog" aria-labelledby="catalog-heading">
+  <h2 id="catalog-heading" class="visually-hidden">Catalog results</h2>
+
+  @if (store.hasProducts() && !store.isLoading$()) {
+    <ul class="catalog__products"
+        role="list"
+        aria-live="polite"
+        [aria-busy]="store.isLoading$()">
+      @for (product of allProducts(); track product.id) {
+        <li role="listitem">
+          <pe-product-card [product]="product" />
+        </li>
+      }
+    </ul>
+  }
+
+  @if (!store.hasProducts() && !store.isLoading$()) {
+    <pe-no-products-card title="No Products Found" description="Sorry, we couldn't find any products matching your search"/>
+  }
+
+  @if (store.isLoading$()) {
+    <div class="catalog__is-loading">
+      <pe-loading-spinner />
+    </div>
+  }
+</section>

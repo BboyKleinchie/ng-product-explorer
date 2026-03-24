@@ -2,6 +2,10 @@
 
 This is a web application for an internal tools team which allows users to browse a catalog, search/filter products, view product details, and save items to favorites.
 
+This project follows the Angular styling guide which can be found [here](https://angular.dev/style-guide).
+
+This project adheres to the Feature-based folder structure. see [blog](https://www.angular.courses/blog/angular-folder-structure-guide).
+
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.1.1.
 
 ## Development server

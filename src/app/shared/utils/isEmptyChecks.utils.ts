@@ -1,3 +1,5 @@
+import { get } from 'lodash-es';
+
 /**
  * Checks if the object is undefined or null
  * @param {T} propertyToCheck any object type
@@ -20,4 +22,27 @@ export const isStringNullOrEmpty = (stringToCheck: string): boolean => {
         isPropertyNull(stringToCheck)
         || stringToCheck.trim() === ''
     );
+}
+
+/**
+ * Checks if the number is null or zero
+ * @param {number} numberToCheck
+ */
+export const isNumberNullOrZero = (numberToCheck: number): boolean => {
+    return(
+        isPropertyNull(numberToCheck)
+        || numberToCheck === 0
+    )
+}
+
+/**
+ * Checks if the array is undefined, null or is an empty array
+ * @param {T[]}arrayToCheck
+ * @returns {boolean} true if the array is undefined, null or empty
+ */
+export const isArrayNullOrEmpty = <T>(arrayToCheck: T[]): boolean => {
+  return (
+    isPropertyNull(arrayToCheck)
+    || isNumberNullOrZero(get(arrayToCheck, 'length', 0))
+  );
 }

@@ -1,0 +1,44 @@
+@use './../abstracts/mixins' as *;
+
+.card-content {
+  background-color: var(--colour-secondary);
+  padding: var(--pg-padding-x) var(--pg-padding-y);
+  min-height: var(--main-min-height);
+}
+
+.card-content__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  color: var(--colour-primary);
+  row-gap: 1rem;
+  padding: 8rem 2rem;
+  @include respond-to(desktop) { padding: 4rem 2rem; }
+}
+
+.card-content__content > img {
+  width: var(--image-size);
+
+  --image-size: 20rem;
+  @include respond-to(tablet) { --image-size: 26rem; }
+  @include respond-to(desktop, min) { --image-size: 34rem; }
+  @include respond-to(desktop) { --image-size: 40rem; }
+}
+
+.card-content__content > h2 {
+  font-size: var(--heading-size);
+
+  --heading-size: 1.6rem;
+  @include respond-to(tablet, min) { --heading-size: 1.8rem; }
+  @include respond-to(tablet) { --heading-size: 2rem; }
+  @include respond-to(desktop) { --heading-size: 2.4rem; }
+}
+.card-content__content > p {
+  text-align: center;
+  font-size: var(--description-size);
+
+  --description-size: 1.2rem;
+  @include respond-to(tablet) { --description-size: 1.4rem; }
+  @include respond-to(desktop) { --description-size: 1.6rem; }
+}
