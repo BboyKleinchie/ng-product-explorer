@@ -24,7 +24,17 @@ export class DropdownComponent {
     return this.selectedItem();
   });
 
+  readonly dropdownId: string;
+  readonly dropdownLabelId: string;
+  readonly dropdownButtonId: string;
+
   private selectedItem = signal<string>('');
+
+  constructor() {
+    this.dropdownId = `dropdown-${Math.random().toString(36).slice(2)}`;
+    this.dropdownLabelId = `${this.dropdownId}-label`;
+    this.dropdownButtonId = `${this.dropdownId}-button`;
+  }
 
   onItemSelected(item: string) {
     this.selectedItem.set(item);

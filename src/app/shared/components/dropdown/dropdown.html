@@ -1,14 +1,28 @@
 <div class="dropdown">
   @if (label()) {
-    <p>{{label()}}</p>
+    <p [id]="dropdownLabelId">{{label()}}</p>
   }
   <div ngbDropdown class="d-inline-block">
-    <button type="button" class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>
+    <button
+      type="button"
+      class="btn btn-outline-primary"
+      [id]="dropdownButtonId"
+      ngbDropdownToggle
+      [attr.aria-labelledby]="dropdownLabelId + ' ' + dropdownButtonId">
       {{selectedItem$()}}
     </button>
-    <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+    <div
+      role="menu"
+      ngbDropdownMenu
+      [attr.aria-labelledby]="dropdownButtonId">
       @for (item of items(); track item) {
-        <button ngbDropdownItem (click)="onItemSelected(item)">{{item}}</button>
+        <button
+          role="menuitemradio"
+          ngbDropdownItem
+          (click)="onItemSelected(item)"
+          [attr.aria-checked]="selectedItem$() === item">
+          {{item}}
+        </button>
       }
     </div>
   </div>
